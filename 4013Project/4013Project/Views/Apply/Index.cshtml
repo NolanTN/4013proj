@@ -1,0 +1,163 @@
+﻿@model _4013Project.Models.Apply
+@{
+    ViewData["Title"] = "Apply";
+}
+
+<div class="container py-5">
+    <div class="row mb-4 text-center">
+        <div class="col">
+            <h1 class="fw-bold" style="color:#7a0d0d;">Business & Product Application</h1>
+            <p class="text-muted mb-0">
+                Tell us about your company and the product you’d like to offer.
+            </p>
+        </div>
+    </div>
+
+    <form asp-action="Index" method="post" novalidate>
+        @Html.AntiForgeryToken()
+
+        <div class="row g-4">
+            <!-- LEFT: Company -->
+            <div class="col-lg-6">
+                <div class="p-4 rounded-4 shadow-sm bg-white h-100">
+                    <h3 class="mb-3 border-bottom pb-2" style="color:#7a0d0d;">
+                        Company Application Information
+                    </h3>
+
+                    <!-- Company Type -->
+                    <div class="mb-3">
+                        <label class="form-label d-block">Company Type</label>
+
+                        <div class="form-check mb-1">
+                            <input class="form-check-input"
+                                   type="radio"
+                                   asp-for="CompanyType"
+                                   value="IBC Organization"
+                                   id="companyTypeIbc" />
+                            <label class="form-check-label" for="companyTypeIbc">
+                                IBC Organization
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   type="radio"
+                                   asp-for="CompanyType"
+                                   value="Independent Student Business"
+                                   id="companyTypeIndependent" />
+                            <label class="form-check-label" for="companyTypeIndependent">
+                                Independent Student Business
+                            </label>
+                        </div>
+
+                        <span class="text-danger" asp-validation-for="CompanyType"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="CompanyLink" class="form-label"></label>
+                        <input asp-for="CompanyLink" class="form-control border-dark border-dashed rounded-3" />
+                        <span class="text-danger" asp-validation-for="CompanyLink"></span>
+                    </div>
+
+                    <h5 class="mt-4 mb-3 border-bottom pb-2" style="color:#7a0d0d;">
+                        Company Contact Information
+                    </h5>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="Address" class="form-label"></label>
+                            <input asp-for="Address" class="form-control border-dark border-dashed rounded-3" />
+                            <span class="text-danger" asp-validation-for="Address"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="State" class="form-label"></label>
+                            <input asp-for="State" class="form-control border-dark border-dashed rounded-3" />
+                            <span class="text-danger" asp-validation-for="State"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="City" class="form-label"></label>
+                            <input asp-for="City" class="form-control border-dark border-dashed rounded-3" />
+                            <span class="text-danger" asp-validation-for="City"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="ZipCode" class="form-label"></label>
+                            <input asp-for="ZipCode" class="form-control border-dark border-dashed rounded-3" />
+                            <span class="text-danger" asp-validation-for="ZipCode"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control border-dark border-dashed rounded-3" />
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="PhoneNumber" class="form-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control border-dark border-dashed rounded-3" />
+                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Product -->
+            <div class="col-lg-6">
+                <div class="p-4 rounded-4 shadow-sm bg-white h-100 d-flex flex-column">
+                    <h3 class="mb-3 border-bottom pb-2" style="color:#7a0d0d;">
+                        Product Application Information
+                    </h3>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="BrandName" class="form-label"></label>
+                            <input asp-for="BrandName" class="form-control border-dark border-dashed rounded-3" />
+                            <span class="text-danger" asp-validation-for="BrandName"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="ProductName" class="form-label"></label>
+                            <input asp-for="ProductName" class="form-control border-dark border-dashed rounded-3" />
+                            <span class="text-danger" asp-validation-for="ProductName"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ProductImageUrl" class="form-label"></label>
+                        <input asp-for="ProductImageUrl" class="form-control border-dark border-dashed rounded-3" />
+                        <span class="text-danger" asp-validation-for="ProductImageUrl"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ProductDescription" class="form-label"></label>
+                        <textarea asp-for="ProductDescription"
+                                  class="form-control border-dark border-dashed rounded-3"
+                                  rows="4"></textarea>
+                        <span class="text-danger" asp-validation-for="ProductDescription"></span>
+                    </div>
+
+                    <div class="mt-auto pt-2">
+                        <div class="row align-items-end g-3">
+                            <div class="col-md-5">
+                                <label asp-for="Price" class="form-label"></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input asp-for="Price" class="form-control border-dark border-dashed rounded-3" />
+                                </div>
+                                <span class="text-danger" asp-validation-for="Price"></span>
+                            </div>
+                            <div class="col-md-7 text-md-end">
+                                <button type="submit"
+                                        class="btn px-4 py-2 mt-3 mt-md-0"
+                                        style="background:#7fd35b;border-radius:999px;border-color:#7fd35b;box-shadow:0 4px 0 rgba(0,0,0,.25);font-weight:600;">
+                                    Apply
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
