@@ -20,3 +20,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+.btn-grow {
+    transition: transform 0.15s ease-in-out;
+}
+
+    .btn-grow:hover {
+        transform: scale(1.05);
+    }

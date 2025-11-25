@@ -1,8 +1,69 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content container-fluid hero-min-height d-flex flex-column justify-content-center align-items-center text-center py-5">
+
+        <div class="mx-auto" style="max-width: 960px;">
+            <h1 class="hero-title mb-3">
+                Hub for Student Business at the<br />
+                University of Oklahoma
+            </h1>
+
+            <p class="lead text-muted mb-5">
+                Find all of the OU IBC products in one place. Students can also list their own
+                products or services!
+            </p>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-center gap-5">
+            <a asp-controller="Ibc" asp-action="Products"
+               class="btn btn-lg btn-danger rounded-pill px-5 btn-grow">
+                IBC Products
+            </a>
+
+            <a asp-controller="Apply" asp-action="Index"
+               class="btn btn-lg btn-danger rounded-pill px-5 btn-grow">
+                Apply
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+@section Styles {
+    <style>
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            background-color: #fff9dd;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url("https://www.ou.edu/content/dam/homepage/about/bizzell-library-oval-lawn.png") center center / cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-min-height {
+            min-height: 75vh;
+        }
+
+        .hero-title {
+            font-size: clamp(2.1rem, 3vw, 2.7rem);
+            font-weight: 800;
+        }
+    </style>
+}
+
