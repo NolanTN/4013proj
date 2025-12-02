@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using _4013Project.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace _4013Project.Controllers
 {
@@ -12,28 +14,21 @@ namespace _4013Project.Controllers
             return View(model);
         }
 
-        // POST: /Apply
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(_4013Project.Models.Apply model)
+        public IActionResult Index(Apply model)
         {
             if (!ModelState.IsValid)
             {
-                // Return the same view with validation messages
+                // Just return the view with validation errors
                 return View(model);
             }
 
-            // TODO: save to database / send email / whatever your process is
+            // Store success text for the popup
+            TempData["Success"] = "Your product was submitted for approval. Please allow 5 business days for review.";
 
-            // Maybe redirect to a confirmation page
-            return RedirectToAction("Confirmation");
-        }
-
-        // GET: /Apply/Confirmation
-        [HttpGet]
-        public IActionResult Confirmation()
-        {
-            return View();
+            // Redirect so refresh doesn't resubmit the form
+            return RedirectToAction("Index");
         }
     }
 }

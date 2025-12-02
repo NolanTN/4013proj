@@ -158,3 +158,51 @@
     </form>
 </div>
 </section>
+
+<!-- Success Modal -->
+<div class="modal fade" id="applySuccessModal" tabindex="-1" aria-labelledby="applySuccessModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-header border-0">
+                <h5 class="modal-title fw-bold" id="applySuccessModalLabel">Application Submitted</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @* Default text as a fallback *@
+                <p id="applySuccessMessage">
+                    Your product was submitted for approval. Please allow 3–5 business days for review.
+                </p>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    @if (TempData["Success"] != null)
+    {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Set the message text from the server
+                var msg = '@TempData["Success"]';
+                var msgElem = document.getElementById("applySuccessMessage");
+                if (msgElem && msg) {
+                    msgElem.textContent = msg;
+                }
+
+                // Show Bootstrap modal
+                var modalElement = document.getElementById('applySuccessModal');
+                if (modalElement) {
+                    var successModal = new bootstrap.Modal(modalElement);
+                    successModal.show();
+                }
+            });
+        </script>
+    }
+}
