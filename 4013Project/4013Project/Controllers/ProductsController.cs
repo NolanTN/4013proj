@@ -24,6 +24,22 @@ namespace _4013Project.Controllers
 
             return View(products);
         }
+
+        // NEW ACTION
+        public ActionResult Details(int id)
+        {
+            // For now just return a simple demo product.
+            // Later you can look this up from a real data source.
+            var product = new Product
+            {
+                Id = id,
+                Title = "IBC Product Name",
+                Description = "Product Description",
+                Cost = 19.99m
+            };
+
+            return View(product);
+        }
     }
 }
 
