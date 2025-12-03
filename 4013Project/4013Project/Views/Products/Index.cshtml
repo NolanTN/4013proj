@@ -18,10 +18,15 @@
             <div class="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
                 <div class="product-card p-3 text-center">
 
-                    <div class="product-image mb-2"></div>
+                    <!-- IMAGE BOX (same spot as original, now with img) -->
+                    <div class="product-image mb-2">
+                        <img src="@item.ImageUrl"
+                             alt="@item.Title"
+                             class="product-img-inner img-fluid" />
+                    </div>
 
                     <h5>@item.Title</h5>
-                    <p><strong>Cost</strong></p>
+                    <p><strong>@item.Cost.ToString("C")</strong></p>
 
                     <a href="@Url.Action("Details", "Products", new { id = item.Id })"
                        class="btn btn-light btn-sm">
@@ -41,21 +46,34 @@
 
     .product-card {
         width: 200px;
-        height: 220px;
+        height: 240px;
         background-color: #7a0a0a;
         color: white;
         border-radius: 5px;
     }
 
+    /* The maroon top bar, now holding the actual image */
     .product-image {
         width: 100%;
         height: 60px;
         background-color: #4d0000;
         border-radius: 3px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-img-inner {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     body {
         background-color: #f0f0d8;
     }
 </style>
+
+
 
