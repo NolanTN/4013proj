@@ -114,16 +114,34 @@
     <div class="container">
         <h2 class="text-center fw-bold mb-5">Current IBC Products</h2>
 
+        @{
+            var imageUrls = new[]
+            {
+                "https://cdn.shoplightspeed.com/shops/618583/files/56474534/1600x2048x1/creative-knitwear-childrens-ou-varsity-jacket.jpg",
+                "https://images.footballfanatics.com/oklahoma-sooners/mens-jordan-brand-white/crimson-oklahoma-sooners-local-peak-cuffed-knit-hat-with-pom_ss5_p-200884070+pv-1+u-mq8h8dn4l4v9erdntx2k+v-x5svybn3tjo0rcd7c8bt.jpg?_hv=2&w=900",
+                "https://tinlizziesokc.com/wp-content/uploads/2024/02/7wltb974ch-scaled.jpg"
+                };
+        }
+
         <div class="row g-4 justify-content-center">
-            @for (int i = 0; i < 8; i++)
+            @for (int i = 0; i < 3; i++)
             {
                 <div class="col-6 col-md-3 d-flex justify-content-center">
-                    <a href="#"
+                    <a asp-controller="Products"
+                       asp-action="Details"
+                       asp-route-id="@(i + 1)"
                        class="product-card d-block w-100">
+
+                        <div class="product-image-wrapper">
+                            <img src="@imageUrls[i]" class="product-image" alt="" />
+                        </div>
+
                     </a>
                 </div>
             }
         </div>
+
+
     </div>
 </section>
 
